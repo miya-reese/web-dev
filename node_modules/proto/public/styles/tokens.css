@@ -1,0 +1,7 @@
+:root {
+    --color-main: rgb(150, 215, 186);
+    --color-accent: rgb(118, 168, 146);
+    --color-trim: whitesmoke;
+    --color-text: rgb(40, 57, 49);
+    --color-text-header: var(--color-trim);
+}
