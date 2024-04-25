@@ -2,19 +2,45 @@
 <html>
     <head>
         <title>=^.^=</title>
-        <link rel="stylesheet" href="/styles/page.css" />
+        <link rel="stylesheet" href="/styles/reset.css"/>
+        <link rel="stylesheet" href="/styles/page.css"/>
+        <link rel="stylesheet" href="/styles/bookshelf.css"/>
+        <script type="module">
+            import { relayEvent } from '/js/relay-event.js';
+      
+            window.relayEvent = relayEvent;
+        </script>
+        <script type="module">
+            function toggleDarkMode(page, checked) {
+              page.classList.toggle("dark-mode", checked);
+            }
+      
+            document.body.addEventListener("dark-mode", (event) =>
+              toggleDarkMode(
+                event.currentTarget,
+                event.detail.checked
+              )
+            );
+          </script>
     </head>
-    <body>
-        <a href="index.html">Logout</a>
+    <body class="page">
         <header>
             <h1>My Bookshelf</h1>
-        </header>
-        <main>
             <nav>
                 <a href="new_journal.html">New Journal</a>
                 <a href="about_us.html">About Us</a>
                 <a href="profile.html">Profile</a>
+                <a href="index.html">Logout</a>
             </nav>
+        </header>
+        <label class="bread-crumb" onchange="relayEvent(
+            event, 
+            'dark-mode', 
+            {checked: event.target.checked})">
+            <input type="checkbox" autocomplete="off" />
+            Dark mode
+        </label>
+        <main>
             <br>
             <article>
                 <img src="https://cdn-icons-png.flaticon.com/512/4371/4371313.png" alt="Notebook" style="width:100px;height:100px;">

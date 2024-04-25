@@ -2,21 +2,41 @@
 <html>
     <head>
         <title>=^.^=</title>
+        <link rel="stylesheet" href="/styles/reset.css"/>
         <link rel="stylesheet" href="/styles/page.css" />
+        <link rel="stylesheet" href="/styles/journal.css" />
+        <script type="module" src="/js/submit.js"></script>
+        <script type="module" src="/js/drop-down.js"></script>
     </head>
     <body>
-        <a href="bookshelf.html">Home</a>
         <header>
             <h1>My Journal</h1>
         </header>
-        <main>
+        <section class="bread-crumb">
+            <a href="bookshelf.html">Back</a>
+        </section>
+        <main class="journal">
             <article>
                 <textarea cols="80" rows="30"></textarea>
-                <section>
-                    <a href="theme_library.html">Theme</a>
-                    <a href="sticker_library.html">Sticker Library</a>
-                </section>
             </article>
+            <article>
+                <details>
+                    <summary>Available Libraries</summary>
+                    <dl>
+                      <dd>
+                        <drop-down>
+                            <p slot="label">Sticker Library</p>
+                            <img src="/images/duck0.png" alt="Cute Duck">
+                            <img src="/images/tulip0.png" alt="Sparkling Tulip">
+                            <img src="/images/bunny0.png" alt="Sitting Bunny">
+                            <img src="/images/bunny1.png" alt="Leaping Bunny">
+                            <img src="/images/frog0.png" alt="Frog">
+                            <img src="/images/frog1.png" alt="Squished Frog">
+                        </drop-down>
+                      </dd>
+                    </dl>
+                </details>
+            </article> 
         </main>
         <footer>
         </footer>

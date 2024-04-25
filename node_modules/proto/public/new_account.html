@@ -2,13 +2,21 @@
 <html>
     <head>
         <title>=^.^=</title>
+        <link rel="stylesheet" href="/styles/reset.css"/>
         <link rel="stylesheet" href="/styles/page.css" />
+        <script type="module">
+            import { createNewAccount } from '/js/submit.js';
+      
+            window.createNewAccount = createNewAccount;
+        </script>
     </head>
     <body>
-        <a href="index.html">Back</a>
         <header>
             <h1>Create New Account</h1>
         </header>
+        <section class="bread-crumb">
+            <a href="index.html">Back</a>
+        </section>
         <main>
             <form>
                 <label for="username">Username:</label>
@@ -26,9 +34,8 @@
                 <input type="profile_img" id="profile_img" name="profile_img"> 
                 <br>
                 <br>
-                <input type="submit" value="Submit">
+                <input type="submit" value="Submit" onclick="createNewAccount(); return false">
             </form>
-            <a href="bookshelf.html">Home</a>
         </main>
         <footer>
         </footer>

@@ -2,28 +2,37 @@
 <html>
     <head>
         <title>=^.^=</title>
+        <link rel="stylesheet" href="/styles/reset.css"/>
         <link rel="stylesheet" href="/styles/page.css" />
+        <script type="module">
+            import { login } from '/js/submit.js';
+      
+            window.login = login;
+        </script>
     </head>
     <body>
-        <a href="index.html">Back</a>
         <header>
             <h1>Login</h1>
         </header>
+        <section class="bread-crumb">
+            <a href="index.html">Back</a>
+        </section>
         <main>
-            <form>
-                <label for="username">Username:</label>
-                <br>
-                <input type="username" id="username" name="username">
-                <br>
-                <br>
-                <label for="password">Password:</label>
-                <br>
-                <input type="password" id="password" name="password"> 
-                <br>
-                <br>
-                <input type="submit" value="Submit">
-            </form>
-            <a href="bookshelf.html">Home</a>
+            <article>
+                <form>
+                    <label for="username">Username:</label>
+                    <br>
+                    <input type="username" id="username" name="username">
+                    <br>
+                    <br>
+                    <label for="password">Password:</label>
+                    <br>
+                    <input type="password" id="password" name="password"> 
+                    <br>
+                    <br>
+                    <input type="submit" value="Submit" onclick="login(); return false">
+                </form>
+            </article>
         </main>
         <footer>
         </footer>

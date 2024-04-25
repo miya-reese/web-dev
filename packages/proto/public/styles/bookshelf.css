@@ -1,0 +1,24 @@
+@import "tokens.css";
+
+header h1 {
+    display: inline-block;
+}
+
+nav {
+    display: flex; 
+    align-items: baseline;
+    justify-content: space-between; 
+}
+
+nav a{
+    display: inline-block;
+    height: 100%;
+    padding: 10px;
+}
+
+.center-journal {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+  }
