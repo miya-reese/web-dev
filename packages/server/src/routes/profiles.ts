@@ -5,7 +5,7 @@ import profiles from "../services/profile-svc";
 
 const router = express.Router();
 
-router.get("/:userid", (req: Request, res: Response) => {
+router.get("/:id", (req: Request, res: Response) => {
     const { userid } = req.params;
   
     profiles
