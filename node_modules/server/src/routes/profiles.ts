@@ -5,7 +5,7 @@ import profiles from "../services/profile-svc";
 
 const router = express.Router();
 
-router.get("/:id", (req: Request, res: Response) => {
+router.get("/:userid", (req: Request, res: Response) => {
     const { userid } = req.params;
   
     profiles
@@ -29,5 +29,15 @@ router.get("/", (req: Request, res: Response) => {
       .then((list: Profile[]) => res.json(list))
       .catch((err) => res.status(500).send(err));
   });
+
+router.put("/:userid", (req: Request, res: Response) => {
+  const { userid } = req.params;
+  const newProfile = req.body;
+  
+  profiles
+    .update(userid, newProfile)
+    .then((profile: Profile) => res.json(profile))
+    .catch((err) => res.status(404).end());
+});
 
 export default router;
