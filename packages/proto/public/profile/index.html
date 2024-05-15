@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="/styles/reset.css" />
         <link rel="stylesheet" href="/styles/tokens.css" />
         <link rel="stylesheet" href="/styles/page.css" />
+        <link rel="stylesheet" href="/styles/profile.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -18,13 +19,14 @@
         </script>
     </head>
     <body>
-        <main>
-            <profile-view>
-                <span slot="userid">cnadin</span>
-                <span slot="firstname">Christina</span>
-                <span slot="lastname">Nadin</span>
-                <img slot="profilepic" src="/images/bunny0.png" />
-              </profile-view>
+        <header>
+            <h1>Profile</h1>
+        </header>
+        <section class="bread-crumb">
+            <a href="bookshelf.html">Back</a>
+        </section>
+        <main class="profile">
+            <profile-view src="/api/profiles/cnadin"></profile-view>
             <restful-form slot="form" src="/api/profiles/cnadin">
                 <label>
                   <span>Username:</span>
@@ -42,7 +44,7 @@
                   <span>Profile picture:</span>
                   <input name="profilepic" />
                 </label>
-                <button
+                <button style="float: right;" 
                   slot="delete"
                   onclick="relayEvent(event,'restful-form:delete')"
                   >Delete this Profile</button

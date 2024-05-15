@@ -3,16 +3,18 @@ import { prepareTemplate } from "./template.js";
 export class RestfulFormElement extends HTMLElement {
   static template = prepareTemplate(`
     <template>
+      <slot name="delete"></slot>
       <form autocomplete="off">
         <slot></slot>
         <slot><button type="submit">Submit</button></slot>
       </form>
-      <slot name="delete"></slot>
+      
       <style>
         form {
           display: grid;
           gap: var(--size-spacing-medium);
           grid-template-columns: [start] 1fr [label] 1fr [input] 3fr 1fr [end];
+          grid-template-rows: [start] 1fr 1fr [end]
         }
         ::slotted(label) {
           display: grid;
@@ -22,6 +24,10 @@ export class RestfulFormElement extends HTMLElement {
         button[type="submit"] {
           grid-column: input;
           justify-self: start;
+        }
+        ::slotted(button) {
+          margin-left: auto;
+          margin-right: auto;
         }
       </style>
     </template>
