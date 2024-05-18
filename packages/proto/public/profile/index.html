@@ -2,12 +2,19 @@
 <html>
     <head>
         <title>=^.^=</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="/styles/reset.css" />
         <link rel="stylesheet" href="/styles/tokens.css" />
         <link rel="stylesheet" href="/styles/page.css" />
         <link rel="stylesheet" href="/styles/profile.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <script type="importmap">
+          {
+            "imports": {
+              "@calpoly/mustang": "/node_modules/@calpoly/mustang/dist/mustang.mjs"
+            }
+          }
+        </script>
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
         <script type="module" src="/js/json-loader.js"></script>
         <script type="module" src="/js/restful-form.js"></script>
@@ -17,46 +24,55 @@
       
             window.relayEvent = relayEvent;
         </script>
+        <script type="module">
+          import { define, Auth } from "@calpoly/mustang";
+        
+          define({ "mu-auth": Auth.Provider });
+        </script>
     </head>
     <body>
+      <mu-auth provides="journal:auth" redirect="../login.html">
         <header>
-            <h1>Profile</h1>
-        </header>
-        <section class="bread-crumb">
-            <a href="bookshelf.html">Back</a>
-        </section>
-        <main class="profile">
-            <profile-view src="/api/profiles/cnadin"></profile-view>
-            <restful-form slot="form" src="/api/profiles/cnadin">
-                <label>
-                  <span>Username:</span>
-                  <input name="userid" />
-                </label>
-                <label>
-                  <span>First Name:</span>
-                  <input name="firstname" />
-                </label>
-                <label>
-                  <span>Last name:</span>
-                  <input name="lastname" />
-                </label>
-                <label>
-                  <span>Profile picture:</span>
-                  <input name="profilepic" />
-                </label>
-                <button style="float: right;" 
-                  slot="delete"
-                  onclick="relayEvent(event,'restful-form:delete')"
-                  >Delete this Profile</button
-                >
-              </restful-form>
-          <json-object src="/api/profiles/cnadin">
-            <a href="#" onclick="relayEvent(event, 'json-object:open')">
-                Christina Nadin
-            </a>
-          </json-object>
-        </main>
-        <footer>
-        </footer>
+          <h1>Profile</h1>
+          <a href="../index.html" onclick="relayEvent(event, 'auth:message', ['auth/signout'])">
+            Sign out</a>
+      </header>
+      <section class="bread-crumb">
+          <a href="../index.html">Back</a>
+      </section>
+      <main class="profile">
+          <profile-view src="/api/profiles/cnadin"></profile-view>
+          <restful-form slot="form" src="/api/profiles/cnadin">
+              <label>
+                <span>Username:</span>
+                <input name="userid" />
+              </label>
+              <label>
+                <span>First Name:</span>
+                <input name="firstname" />
+              </label>
+              <label>
+                <span>Last name:</span>
+                <input name="lastname" />
+              </label>
+              <label>
+                <span>Profile picture:</span>
+                <input name="profilepic" />
+              </label>
+              <button style="float: right;" 
+                slot="delete"
+                onclick="relayEvent(event,'restful-form:delete')"
+                >Delete this Profile</button
+              >
+            </restful-form>
+        <json-object src="/api/profiles/cnadin">
+          <a href="#" onclick="relayEvent(event, 'json-object:open')">
+              Christina Nadin
+          </a>
+        </json-object>
+      </main>
+      <footer>
+      </footer>
+      </mu-auth>
     </body>
 </html>

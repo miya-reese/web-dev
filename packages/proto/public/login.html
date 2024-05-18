@@ -4,11 +4,19 @@
         <title>=^.^=</title>
         <link rel="stylesheet" href="/styles/reset.css"/>
         <link rel="stylesheet" href="/styles/page.css" />
-        <script type="module">
-            import { login } from '/js/submit.js';
-      
-            window.login = login;
-        </script>
+        <script type="importmap">
+            {
+              "imports": {
+                "@calpoly/mustang": "/node_modules/@calpoly/mustang/dist/mustang.mjs"
+              }
+            }
+          </script>
+          <script type="module" src="/js/login-form.js"></script>
+          <script type="module">
+            import { define, Auth } from "@calpoly/mustang";
+          
+            define({ "mu-auth": Auth.Provider });
+          </script>
     </head>
     <body>
         <header>
@@ -17,23 +25,26 @@
         <section class="bread-crumb">
             <a href="index.html">Back</a>
         </section>
-        <main>
-            <article>
-                <form>
-                    <label for="username">Username:</label>
-                    <br>
-                    <input type="username" id="username" name="username">
-                    <br>
-                    <br>
-                    <label for="password">Password:</label>
-                    <br>
-                    <input type="password" id="password" name="password"> 
-                    <br>
-                    <br>
-                    <input type="submit" value="Submit" onclick="login(); return false">
-                </form>
-            </article>
-        </main>
+        <mu-auth>
+            <h2>User Login</h2>
+            <main class="card">
+              <login-form>
+                <label>
+                  <span>Username:</span>
+                  <input name="username" autocomplete="off" />
+                </label>
+                <label>
+                  <span>Password:</span>
+                  <input type="password" name="password" />
+                </label>
+              </login-form>
+            </main>
+            <p>
+              Or did you want to
+              <a href="./new_account.html">Sign up as a new user</a>
+              ?
+            </p>
+          </mu-auth>
         <footer>
         </footer>
     </body>

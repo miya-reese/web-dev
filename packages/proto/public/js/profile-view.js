@@ -1,5 +1,7 @@
 import { prepareTemplate } from "./template.js";
 import { loadJSON } from "./json-loader.js";
+import { Auth, Observer } from "@calpoly/mustang";
+
 
 export class ProfileViewElement extends HTMLElement {
     get src() {
@@ -56,11 +58,26 @@ export class ProfileViewElement extends HTMLElement {
     );
   }
 
-  connectedCallback() {
-    if ( this.src )
-      loadJSON(this.src, this, renderSlots);
+  _authObserver = new Observer(this, "journal:auth");
+
+  get authorization() {
+    console.log("Authorization for user, ", this._user);
+    return (
+      this._user?.authenticated && {
+        Authorization: `Bearer ${this._user.token}`
+      }
+    );
   }
 
+  connectedCallback() {
+    this._authObserver.observe(({ user }) => {
+      this._user = user;
+  
+      if (this.src) {
+        loadJSON(this.src, this, renderSlots, this.authorization );
+      }
+    });
+  }
 }
 
 customElements.define("profile-view", ProfileViewElement);
