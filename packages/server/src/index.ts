@@ -1,5 +1,6 @@
 // src/index.ts
 import express, { Request, Response } from "express";
+import path from "path";
 import profiles from "./routes/profiles";
 import { connect } from "./services/mongo";
 import auth, { authenticateUser } from "./routes/auth";
@@ -12,8 +13,17 @@ const staticDir = process.env.STATIC || "public";
 
 app.use(express.static(staticDir));
 app.use(express.json());
-app.use("/api/profiles", authenticateUser, profiles);
+
 app.use("/auth", auth);
+
+const nodeModules = path.resolve(
+  __dirname,
+  "../../../node_modules"
+);
+console.log("Serving NPM packages from", nodeModules);
+app.use("/node_modules", express.static(nodeModules));
+
+app.use("/api/profiles", authenticateUser, profiles);
 
 app.get("/hello", (req: Request, res: Response) => {
     res.send("Hello, World");}
