@@ -2,6 +2,7 @@
 import express, { Request, Response } from "express";
 import profiles from "./routes/profiles";
 import { connect } from "./services/mongo";
+import auth, { authenticateUser } from "./routes/auth";
 
 connect("cluster0"); // use your own db name here
 
@@ -11,7 +12,8 @@ const staticDir = process.env.STATIC || "public";
 
 app.use(express.static(staticDir));
 app.use(express.json());
-app.use("/api/profiles", profiles);
+app.use("/api/profiles", authenticateUser, profiles);
+app.use("/auth", auth);
 
 app.get("/hello", (req: Request, res: Response) => {
     res.send("Hello, World");}
