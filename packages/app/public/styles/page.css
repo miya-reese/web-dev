@@ -1,0 +1,91 @@
+@import "tokens.css";
+
+body {
+    color: var(--color-text);
+    background-color: var(--color-main);
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+.bread-crumb {
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+}
+
+  header {
+      color: var(--color-text-header);
+      background-color: var(--color-accent);
+      display: flex; 
+      align-items: baseline; 
+      justify-content: space-between; 
+      padding: 0.5rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+  }
+
+  header h1 {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 42px;
+  }
+
+  a {
+      color: var(--color-link);
+  }
+
+main {
+  margin-top: 2rem;
+  margin-left: 6rem;
+  margin-right: 6rem;
+}
+
+  .center-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+  }
+
+  .libre-baskerville-regular {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .libre-baskerville-bold {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .libre-baskerville-regular-italic {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .lato-regular {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .lato-bold {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .lato-regular-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  

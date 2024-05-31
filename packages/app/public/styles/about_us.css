@@ -1,0 +1,14 @@
+section {
+    padding-top: 1rem;
+}
+
+.about-us {
+    display: grid; 
+    grid-template-columns: [start] 1fr 1fr [end]; 
+    gap: 2rem;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+  }

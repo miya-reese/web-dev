@@ -1,0 +1,24 @@
+:root {
+    --color-main: rgb(150, 215, 186);
+    --color-accent: rgb(118, 168, 146);
+    --color-accent2: rgb(179, 231, 208);
+    --color-trim: whitesmoke;
+    --color-text: rgb(40, 57, 49);
+    --color-text-header: var(--color-trim);
+    --color-link: rgb(13, 84, 150);
+
+    --size-spacing-small: 0.25rem;
+    --size-spacing-medium: 0.5rem;
+    --size-spacing-large: 1rem;
+    --size-spacing-xlarge: 2rem;
+    
+}
+
+body.dark-mode {
+    --color-main: rgb(42, 60, 52);
+    --color-accent: rgb(38, 54, 47);
+    --color-trim: whitesmoke;
+    --color-text: rgb(164, 231, 200);
+    --color-text-header: var(--color-trim);
+    --color-link: rgb(94, 185, 197);
+  }

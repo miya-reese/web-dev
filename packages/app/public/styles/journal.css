@@ -1,0 +1,12 @@
+.journal {
+    display: grid; 
+    grid-template-columns: [start] 4fr 1fr 1fr[end]; 
+    gap: 2rem;
+    justify-items: center;
+}
+
+img {
+    width:6rem;
+    height: auto;
+}
+
