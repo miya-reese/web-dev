@@ -20,24 +20,26 @@
     </head>
     <body>
         <mu-auth<mu-auth provides="journal:auth" redirect="./login.html">
-            <article>
-                <journal-header></journal-header>
-                <main>
-                    <article class="center">
-                        <img src="https://i.pinimg.com/564x/73/e5/ef/73e5ef15db6b76b9d4017a454825ac32.jpg" alt="Flowers">
-                        <br>
-                        <br>
-                        <a href="login.html">Login</a>
-                        <br>
-                        <a href="new_account.html">Create New Account</a>
-                        <br>
-                        <br>
-                        <a href="bookshelf.html">Access the home page here until login is functional</a>
-                    </article>
-                </main>
-                <footer>
-                </footer>
-            </article>
+            <mu-store provides="blazing:model">
+                <article>
+                    <journal-header></journal-header>
+                    <main>
+                        <article class="center">
+                            <img src="https://i.pinimg.com/564x/73/e5/ef/73e5ef15db6b76b9d4017a454825ac32.jpg" alt="Flowers">
+                            <br>
+                            <br>
+                            <a href="login.html">Login</a>
+                            <br>
+                            <a href="new_account.html">Create New Account</a>
+                            <br>
+                            <br>
+                            <a href="bookshelf.html">Access the home page here until login is functional</a>
+                        </article>
+                    </main>
+                    <footer>
+                    </footer>
+                </article>
+            </mu-store>
         </mu-auth>
     </body>
 </html>

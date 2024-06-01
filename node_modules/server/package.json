@@ -8,7 +8,7 @@
     "start:proto": "cross-env STATIC=../proto/public npm run start",
     "dev": "cross-env STATIC=../proto/public npx nodemon",
     "build": "npx etsc",
-    "start": "cross-env STATIC=../proto/public node dist/index.js",
+    "start": "node dist/index.js",
     "check": "npx tsc --noEmit"
   },
   "author": "",

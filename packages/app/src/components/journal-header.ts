@@ -1,17 +1,16 @@
-//import { DropdownElement, define } from "@calpoly/mustang";
+import { DropdownElement, define } from "@calpoly/mustang";
 import { LitElement, css, html } from "lit";
 
 export class JournalHeaderElement extends LitElement {
-  //static uses = define({
-    //"drop-down": DropdownElement
-  //});
+  static uses = define({
+    "drop-down": DropdownElement
+  });
 
   render() {
     return html`
     <header>
         <h1>Welcome</h1>
-        <h1>hi</h1>
-        <!--<drop-down>…</drop-down>-->
+        <drop-down>…</drop-down>
     </header>
     `;
   }

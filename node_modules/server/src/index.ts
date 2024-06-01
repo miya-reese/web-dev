@@ -10,6 +10,7 @@ connect("cluster0"); // use your own db name here
 const app = express();
 const port = process.env.PORT || 3000;
 const staticDir = process.env.STATIC || "public";
+console.log("static files", staticDir);
 
 app.use(express.static(staticDir));
 app.use(express.json());
