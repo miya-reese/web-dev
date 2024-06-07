@@ -7,6 +7,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+        <script type="module" src="/src/main"></script>
         <script type="module">
             import { define, Auth, Events } from "@calpoly/mustang";
             import { JournalHeaderElement } from "/src/components/journal-header";
@@ -19,27 +20,15 @@
         </script>
     </head>
     <body>
-        <mu-auth<mu-auth provides="journal:auth" redirect="./login.html">
-            <mu-store provides="blazing:model">
-                <article>
-                    <journal-header></journal-header>
-                    <main>
-                        <article class="center">
-                            <img src="https://i.pinimg.com/564x/73/e5/ef/73e5ef15db6b76b9d4017a454825ac32.jpg" alt="Flowers">
-                            <br>
-                            <br>
-                            <a href="login.html">Login</a>
-                            <br>
-                            <a href="new_account.html">Create New Account</a>
-                            <br>
-                            <br>
-                            <a href="bookshelf.html">Access the home page here until login is functional</a>
-                        </article>
-                    </main>
-                    <footer>
-                    </footer>
-                </article>
-            </mu-store>
-        </mu-auth>
+        <mu-history provides="journal:history">
+            <mu-auth provides="journal:auth" redirect="./login.html">
+                <mu-store provides="journal:model">
+                    <article>
+                        <journal-header><h1 slot="title">Welcome</h1></journal-header>
+                        <mu-switch></mu-switch>
+                    </article>
+                </mu-store>
+            </mu-auth>
+        </mu-history>
     </body>
 </html>

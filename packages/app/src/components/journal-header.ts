@@ -1,16 +1,55 @@
-import { DropdownElement, define } from "@calpoly/mustang";
-import { LitElement, css, html } from "lit";
+import {
+  View,
+  Auth,
+  Events,
+  Observer,
+} from "@calpoly/mustang";
+import { css, html } from "lit";
+import { property, state } from "lit/decorators.js";
+import { Profile } from "server/models";
+import { Msg } from "../messages";
+import { Model } from "../model";
 
-export class JournalHeaderElement extends LitElement {
-  static uses = define({
-    "drop-down": DropdownElement
-  });
+
+export class JournalHeaderElement extends View<Model, Msg> {
+  @property()
+  username = "anonymous";
+
+  @state()
+  get profile(): Profile | undefined {
+    return this.model.profile;
+  }
+
+  constructor() {
+    super("journal:model");
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this._authObserver.observe(({ user }) => {
+      if (user && user.username !== this.username) {
+        this.username = user.username;
+        this.dispatchMessage([
+          "profile/select",
+          { userid: this.username }
+        ]);
+      }
+    });
+  }
 
   render() {
+    const {userid} =
+      this.profile || {};
+
     return html`
     <header>
-        <h1>Welcome</h1>
-        <drop-down>…</drop-down>
+        <h1><slot name="title"><slot></h1>
+        <nav>
+            <a href="new_journal.html">New Journal</a>
+            <a href="about_us.html">About Us</a>
+            <a href="/app/profile/${userid}">Profile</a>
+            <a href="/login.html" @click=${signOutUser}>Logout</a>
+        </nav>
     </header>
     `;
   }
@@ -34,4 +73,14 @@ export class JournalHeaderElement extends LitElement {
     font-size: 40px;
   }
   `;
+
+  _authObserver = new Observer<Auth.Model>(
+    this,
+    "journal:auth"
+  );
+
+}
+
+function signOutUser(ev: Event) {
+  Events.relay(ev, "auth:message", ["auth/signout"]);
 }
