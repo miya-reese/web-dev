@@ -33,17 +33,30 @@ export class ProfileViewer extends LitElement {
         justify-self: start;
       }
 
+      .profile {
+    display: grid; 
+    grid-template-columns: [start] 1fr 4fr[end]; 
+    gap: 2rem;
+}
+
+.right {
+    margin-left: auto; 
+    margin-right: 0;
+
     
   `;
   
     render() {
       return html`
       <section>
+      <journal-header><h1 slot="title">Profile</h1></journal-header>
+      <article>
       <h1><slot name="firstname"></slot> <slot name="lastname"></slot></h1>
       <slot name="profilepic"></slot>
       <dl>
         <dt>Username:  <slot name="userid"></slot></dt>
       </dl>
+      </article>
       </section>
       `;
     }
@@ -71,6 +84,17 @@ export class ProfileViewElement extends View<Model, Msg> {
     super("journal:model");
   }
 
+  static styles = css`.profile {
+    display: grid; 
+    grid-template-columns: [start] 1fr 4fr[end]; 
+    gap: 2rem;
+}
+
+.right {
+    margin-left: auto; 
+    margin-right: 0;
+}`
+
   render() {
 
     const {
@@ -81,12 +105,12 @@ export class ProfileViewElement extends View<Model, Msg> {
       } = this.profile || {};
 
     return html`
-    <profile-viewer>
-        <span slot="firstname">${firstname}</span>
-        <span slot="lastname">${lastname}</span>
-        <img slot="profilepic" src="${profilepic}" alt="Profile Picture"/>
-        <span slot="userid">${userid}</span>
-    </profile-viewer>
+      <profile-viewer>
+          <span slot="firstname">${firstname}</span>
+          <span slot="lastname">${lastname}</span>
+          <img slot="profilepic" src="${profilepic}" alt="Profile Picture"/>
+          <span slot="userid">${userid}</span>
+      </profile-viewer>
     `;
   }
 

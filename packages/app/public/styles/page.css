@@ -1,8 +1,15 @@
 @import "tokens.css";
 
+html { 
+  background: url(../images/background.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 body {
     color: var(--color-text);
-    background-color: var(--color-main);
     font-family: "Lato", sans-serif;
     font-weight: 400;
     font-style: normal;

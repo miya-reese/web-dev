@@ -13,6 +13,10 @@ import update from "./update";
 import { ProfileViewElement } from "./views/profile-view";
 import { JournalHeaderElement } from "./components/journal-header";
 import { LandingViewElement } from "./views/landing-view";
+import { BookshelfViewElement } from "./views/bookshelf-view";
+import { AboutusViewElement } from "./views/aboutus-view";
+import { JournalViewElement } from "./views/journal-view";
+
 
 const routes: Switch.Route[] = [
   {
@@ -22,9 +26,21 @@ const routes: Switch.Route[] = [
     `
   },
   {
+    path: "/app/aboutus",
+    view: () => html`
+      <aboutus-view></aboutus-view>
+    `
+  },
+  {
+    path: "/app/journal",
+    view: () => html`
+      <journal-view></journal-view>
+    `
+  },
+  {
     path: "/app",
     view: () => html`
-      <landing-view></landing-view>
+      <bookshelf-view></bookshelf-view>
     `
   },
   {
@@ -51,5 +67,8 @@ define({
   },
   "journal-header": JournalHeaderElement,
   "profile-view": ProfileViewElement,
-  "landing-view": LandingViewElement
+  "landing-view": LandingViewElement,
+  "bookshelf-view": BookshelfViewElement,
+  "aboutus-view": AboutusViewElement,
+  "journal-view": JournalViewElement
 });

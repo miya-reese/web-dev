@@ -45,8 +45,8 @@ export class JournalHeaderElement extends View<Model, Msg> {
     <header>
         <h1><slot name="title"><slot></h1>
         <nav>
-            <a href="new_journal.html">New Journal</a>
-            <a href="about_us.html">About Us</a>
+            <a href="/app">Home</a>
+            <a href="/app/aboutus">About Us</a>
             <a href="/app/profile/${userid}">Profile</a>
             <a href="/login.html" @click=${signOutUser}>Logout</a>
         </nav>
@@ -56,21 +56,25 @@ export class JournalHeaderElement extends View<Model, Msg> {
 
   static styles = css`
   header {
+    margin: 0.0rem;
+    padding: 0.0rem;
+    
     color: var(--color-text-header);
     background-color: var(--color-accent);
     display: flex; 
     align-items: baseline; 
     justify-content: space-between; 
-    padding: 0.0 rem;
     padding-left: 2rem;
     padding-right: 2rem;
   }
 
   header h1 {
+    margin: 0.0rem;
+    padding: 0.0rem;
     font-family: "Libre Baskerville", serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 40px;
+    font-size: 30px;
   }
   `;
 

@@ -9,16 +9,11 @@ import { Model } from "../model";
 export class LandingViewElement extends View<Model, Msg> {
   render() {
     return html`
-    <article class="center">
-        <img src="https://i.pinimg.com/564x/73/e5/ef/73e5ef15db6b76b9d4017a454825ac32.jpg" alt="Flowers">
-        <br>
-        <br>
+    <article>
+      <journal-header><h1 slot="title">Welcome</h1></journal-header>
         <a href="/login.html" @click=${signOutUser}>Login</a>
         <br>
-        <a href="new_account.html">Create New Account</a>
-        <br>
-        <br>
-        <a href="/app/profile/cnadin">Profile Page</a>
+        <a href="/new_account.html">Create New Account</a>
     </article>
     `;
   }
